@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+    background-repeat: no-repeat; 
+   background-size: 100% 100%;   
+   background-attachment: fixed; 
+   margin:auto; 
+
+}
+
+.tit {
+  --hue: 60;
+  font-family:sans-serif;
+  margin:0 auto;
+  margin-top: 0px;
+  min-height:15vh;
+  display: grid;
+  place-items:center;
+  /*background: black; color de fondo de la barra de navegacion*/
+  margin-bottom:0px;
+  
+
+}
+
+h1 {
+  margin: 0px;
+  font-size: clamp(1rem, 2vw, 3rem);/*tamaño de la letra (se lo da el parametro clamp) valor mínimo, el valor preferido y el valor máximo*/
+  display: flex;/*indica la capacidad de un elemento flexible para alterar sus dimensiones y llenar el espacio disponible.*/
+}
+
+span {
+  --stagger:200ms;/*el lado de donde empezara a pegar la curva de derecha a izquierda o al reves*/
+  --delay: calc(var(--i) * var(--stagger, 200ms));
+}
+
+span > span {
+  display: block;
+  animation: bounce 2000ms var(--delay, 0ms) infinite;
+  transform-origin: center bottom;
+  z-index: 1;
+}
+
+span:not(span > span)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  background: hsl(var(--hue) 50% 45% / 0.1); /*sombra de las letras*/
+  transform: translate3d(0, 1em, 0) scaleY(0.1) scaleX(0.2);
+  transform-origin: center top;
+  border-radius: 100%;
+  filter: blur(0.08em);
+  animation: shadow 2000ms var(--delay, 0ms) infinite;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg) scaleY(1); /*scaleY tamaño de letra a lo alto*/
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: translate3d(0, 2em, 0) rotateY(0deg) scaleY(1);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translate3d(0, 2em, 0) rotateY(0deg) scaleY(0); /*rotate: rotacion de las letras se maneja por grados*/
+    animation-timing-function: ease-out, ease-out, linear;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0) scaleY(1);
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes shadow {
+  0% {
+    transform: translate3d(0, 1em, 0) scale3d(0.07, 0.1, 0.25);
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: translate3d(0, 1em, 0) scale3d(0.2, 0.05, 0.25);
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translate3d(0, 1em, 0) scale3d(0.2, 0.05, 0.25);
+    opacity: 1;
+    animation-timing-function: linear;
+  }
+  100% {
+    transform: translate3d(0, 1em, 0) scale3d(0.07, 0.1, 0.25);
+    opacity: 0;
+    animation-timing-function:ease-out;
+  }
+}
+/*inicio de la barra de navegacion*/
+.container{
+position: fixed;
+width: 100%;
+height: 100%;  
+overflow:auto;
+left: -320px;
+transition: all ease-in-out 300ms;
+margin-top:0px;
+}
+
+.sidebar{
+    width: 150px;
+    height: 100%;
+    background: black;
+    overflow: auto;
+    float: left;
+    
+}
+
+.sidebar img{
+    width: 130px;
+    display: block;
+    margin: 10px auto;
+    opacity: .7;
+}
+
+.side-hide{
+    float: right;
+    margin: 12px;
+    color: white;
+    opacity: .7;
+    font-size: 24px;
+    cursor: pointer;
+    
+}
+.sidebar ul li{
+    list-style: none;
+    padding: 12px 10px;  
+    
+}
+
+.sidebar ul li:hover{
+    background:#4e4e4e;
+    cursor: pointer;
+    
+}
+
+.sidebar ul li a{
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-family: sans-serif; 
+}
+
+/*.content{
+    padding: 20px;
+    font-size: 16px;
+    color: black;
+    font-family:sans-serif;
+}*/
+
+button{
+   background: black;
+   color: white;
+   padding: 25px 65px; /*alto del boton, largo*/
+   border: none;
+   cursor: pointer;
+   margin: 0px auto;
+   margin-top:-35px;
+   margin-left: 0px;    
+   text-align:  center;
+}
+
+.show{
+    left: 0;
+}
+/*fin barra de navegacion*/
+
+
+
+h2{
+    text-align:center;
+    margin-bottom:0px;
+    color:#ffffff;
+     margin-left: 15px;
+    margin-right: 15px;
+    
+}
+
+h3{
+    text-align:left;
+    margin-bottom:0px;
+    color:#ffffff;
+     margin-left: 15px;
+    margin-right: 15px;
+    
+}
+
+
+.cont{
+    text-align: center;
+    background:black;
+     margin-left: 50px;
+    margin-right: 50px;
+}
+
+.audio{
+    padding: 10px 12px;/*alto del btn play y largo*/
+}
